@@ -2063,6 +2063,8 @@ agent:
     targetCPUUtilizationPercentage: 80
   # @schema {"name": "agent.image", "alias": "image"}
   image:
+    # agent.image.registry -- image registry
+    registry: ghcr.io
     # agent.image.repository -- image repository
     repository: vdaas/vald-agent-ngt
     # agent.image.tag -- image tag (overrides defaults.image.tag)
@@ -2444,6 +2446,8 @@ agent:
     name: vald-agent-sidecar
     # @schema {"name": "agent.sidecar.image", "alias": "image"}
     image:
+      # agent.sidecar.image.registry -- image registry
+      registry: ghcr.io
       # agent.sidecar.image.repository -- image repository
       repository: vdaas/vald-agent-sidecar
       # agent.sidecar.image.tag -- image tag (overrides defaults.image.tag)

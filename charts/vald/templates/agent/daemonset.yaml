@@ -76,7 +76,7 @@ spec:
         {{- end }}
         {{- if $agent.sidecar.initContainerEnabled }}
         - name: {{ $agent.sidecar.name }}-init
-          image: "{{ $agent.sidecar.image.repository }}:{{ default .Values.defaults.image.tag $agent.sidecar.image.tag }}"
+          image: "{{ $agent.sidecar.image.registry }}/{{ $agent.sidecar.image.repository }}:{{ default .Values.defaults.image.tag $agent.sidecar.image.tag }}"
           imagePullPolicy: {{ $agent.sidecar.image.pullPolicy }}
           {{- $servers := dict "Values" $agent.sidecar.server_config "default" .Values.defaults.server_config -}}
           {{- include "vald.containerPorts" $servers | trim | nindent 10 }}
@@ -134,7 +134,7 @@ spec:
             {{- end }}
         {{- if $agent.sidecar.enabled }}
         - name: {{ $agent.sidecar.name }}
-          image: "{{ $agent.sidecar.image.repository }}:{{ default .Values.defaults.image.tag $agent.sidecar.image.tag }}"
+           image: "{{ $agent.sidecar.image.registry }}/{{ $agent.sidecar.image.repository }}:{{ default .Values.defaults.image.tag $agent.sidecar.image.tag }}"
           imagePullPolicy: {{ $agent.sidecar.image.pullPolicy }}
           {{- $servers := dict "Values" $agent.sidecar.server_config "default" .Values.defaults.server_config -}}
           {{- include "vald.containerPorts" $servers | trim | nindent 10 }}
