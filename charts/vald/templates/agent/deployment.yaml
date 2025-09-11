@@ -114,7 +114,7 @@ spec:
       {{- end }}
       containers:
         - name: {{ $agent.name }}
-          image: "{{ $agent.image.repository }}:{{ default .Values.defaults.image.tag $agent.image.tag }}"
+          image: "{{ $agent.image.registry }}/{{ $agent.image.repository }}:{{ default .Values.defaults.image.tag $agent.image.tag }}"
           imagePullPolicy: {{ $agent.image.pullPolicy }}
           {{- $servers := dict "Values" $agent.server_config "default" .Values.defaults.server_config -}}
           {{- include "vald.containerPorts" $servers | trim | nindent 10 }}
